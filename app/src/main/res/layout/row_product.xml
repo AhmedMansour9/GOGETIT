@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/T_Price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:maxLines="1"
+        android:textSize="12sp"
+
+        android:textColor="#d1d1d1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/T_Discrption" />
+
+    <TextView
+        android:id="@+id/T_Title"
+        android:layout_width="153dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="#17181a"
+        android:maxLines="1"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imag_product" />
+
+    <TextView
+        android:id="@+id/T_Discrption"
+        android:layout_width="153dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:textColor="#cececf"
+        android:maxLines="1"
+        android:textSize="12sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/T_Title" />
+
+    <TextView
+        android:id="@+id/T_OrignalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="1dp"
+        android:textSize="12sp"
+
+        android:maxLines="1"
+        android:textColor="#d1d1d1"
+        app:layout_constraintStart_toEndOf="@+id/T_Price"
+        app:layout_constraintTop_toBottomOf="@+id/T_Discrption" />
+
+    <ImageView
+        android:id="@+id/imag_product"
+        android:layout_width="166dp"
+        android:layout_height="156dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
