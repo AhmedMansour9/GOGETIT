@@ -3,63 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#fff"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#fff">
 
-    <TextView
-        android:id="@+id/T_Price"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_125sdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:maxLines="1"
-        android:textSize="12sp"
-
-        android:textColor="#d1d1d1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/T_Discrption" />
+        app:layout_constraintTop_toBottomOf="@+id/T_Discrption">
+
+        <TextView
+            android:id="@+id/T_OrignalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:maxLines="1"
+            android:text="342234"
+            android:textColor="#d1d1d1"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/T_Price"
+            tools:layout_editor_absoluteY="2dp" />
+
+        <TextView
+            android:id="@+id/T_Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:maxLines="1"
+            android:text="342234"
+
+            android:textColor="#d1d1d1"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="2dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/T_Title"
-        android:layout_width="153dp"
+        android:layout_width="@dimen/_125sdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textColor="#17181a"
         android:maxLines="1"
+        android:text="sdfsdfdfs"
+        android:textColor="#17181a"
+
         android:textSize="15sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imag_product" />
 
     <TextView
         android:id="@+id/T_Discrption"
-        android:layout_width="153dp"
+        android:layout_width="@dimen/_125sdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:textColor="#cececf"
         android:maxLines="1"
+        android:textColor="#cececf"
         android:textSize="12sp"
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/T_Title" />
 
-    <TextView
-        android:id="@+id/T_OrignalPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="1dp"
-        android:textSize="12sp"
-
-        android:maxLines="1"
-        android:textColor="#d1d1d1"
-        app:layout_constraintStart_toEndOf="@+id/T_Price"
-        app:layout_constraintTop_toBottomOf="@+id/T_Discrption" />
-
     <ImageView
         android:id="@+id/imag_product"
-        android:layout_width="166dp"
+        android:layout_width="@dimen/_130sdp"
         android:layout_height="156dp"
         android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

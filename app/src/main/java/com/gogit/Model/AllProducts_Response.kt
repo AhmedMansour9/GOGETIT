@@ -1,10 +1,14 @@
 package com.gogit.Model
 
 
+import android.annotation.SuppressLint
+import android.os.Parcelable
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-@Keep
+@SuppressLint("ParcelCreator")
+@Parcelize
 data class AllProducts_Response(
     @SerializedName("data")
     val `data`: List<AllProducts_Model>,
@@ -12,8 +16,9 @@ data class AllProducts_Response(
     val error: String,
     @SerializedName("status")
     val status: Boolean
-) {
-    @Keep
+): Parcelable {
+    @SuppressLint("ParcelCreator")
+    @Parcelize
     data class AllProducts_Model(
         @SerializedName("brand_name")
         val brandName: String,
@@ -35,5 +40,5 @@ data class AllProducts_Response(
         val shortDescription: String,
         @SerializedName("title")
         val title: String
-    )
+    ) : Parcelable
 }

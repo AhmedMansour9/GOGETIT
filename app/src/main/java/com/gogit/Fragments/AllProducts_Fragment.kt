@@ -15,6 +15,7 @@ import com.gogit.Activties.Navigation
 import com.gogit.Adapter.AllProducts_Adapter
 import com.gogit.Model.AllProducts_Response
 import com.gogit.R
+import com.gogit.View.ProductDetails_View
 import com.gogit.ViewModel.getAllProducts_ViewModel
 import kotlinx.android.synthetic.main.fragment_all_products_.*
 import kotlinx.android.synthetic.main.fragment_all_products_.view.*
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_all_products_.view.*
 /**
  * A simple [Fragment] subclass.
  */
-class AllProducts_Fragment : Fragment() {
+class AllProducts_Fragment : Fragment() , ProductDetails_View {
     lateinit var root:View
 
     override fun onCreateView(
@@ -40,8 +41,9 @@ class AllProducts_Fragment : Fragment() {
     fun getAllProducts(){
         var allproducts: getAllProducts_ViewModel = ViewModelProviders.of(this)[getAllProducts_ViewModel::class.java]
         this.context!!.applicationContext?.let {
-            allproducts.getData("en", it)?.observe(this, Observer<AllProducts_Response> { loginmodel ->
+            allproducts.getData("en", it).observe(this, Observer<AllProducts_Response> { loginmodel ->
                 val listAdapter  = AllProducts_Adapter(context!!.applicationContext,loginmodel.data)
+                listAdapter.onClick(this)
                 Recycle_AllShoes.setLayoutManager(
                     GridLayoutManager(
                         context!!.applicationContext
@@ -71,5 +73,13 @@ class AllProducts_Fragment : Fragment() {
         Navigation.drawerLayout?.addDrawerListener(toggle)
 
     }
+    override fun Details(detailsProduct: AllProducts_Response.AllProducts_Model) {
+        var productsByid=Details_ProductsFragment()
+        val bundle = Bundle()
+        bundle.putParcelable("ProductItem", detailsProduct)
+        productsByid.arguments=bundle
+        fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)
+            ?.addToBackStack(null)?.commit()
 
+    }
 }

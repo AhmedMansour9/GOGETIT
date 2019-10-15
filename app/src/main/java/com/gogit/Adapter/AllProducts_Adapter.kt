@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gogit.Model.AllProducts_Response
 import com.gogit.R
+import com.gogit.View.ProductDetails_View
 
 class AllProducts_Adapter (context: Context,val userList: List<AllProducts_Response.AllProducts_Model>)
     : RecyclerView.Adapter<AllProducts_Adapter.ViewHolder>() {
     //this method is returning the view for each item in the list
+    lateinit var ProductsDetails: ProductDetails_View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllProducts_Adapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.row_product, parent, false)
         return ViewHolder(v)
@@ -24,6 +26,12 @@ class AllProducts_Adapter (context: Context,val userList: List<AllProducts_Respo
     //this method is binding the data on the list
     override fun onBindViewHolder(holder: AllProducts_Adapter.ViewHolder, position: Int) {
         holder.bindItems(userList.get(position))
+        holder.itemView.setOnClickListener(){
+            ProductsDetails.Details(userList.get(position))
+        }
+    }
+    fun onClick(ProductsDetail: ProductDetails_View){
+        this.ProductsDetails=ProductsDetail
     }
 
     //this method is giving the size of the list

@@ -34,8 +34,8 @@ class Categories_Adapter (context: Context, val userList: List<Categories_Respon
     override fun getItemCount(): Int {
         return userList.size
     }
-    fun onClick(productId:ProductBytUd_View){
-        this.productbyid=productbyid
+    fun onClick(productI:ProductBytUd_View){
+        this.productbyid=productI
     }
 
     //the class is hodling the list view

@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.preference.PreferenceManager
 import android.view.View
+import androidx.preference.PreferenceManager
 import com.gogit.R
 import java.util.*
 

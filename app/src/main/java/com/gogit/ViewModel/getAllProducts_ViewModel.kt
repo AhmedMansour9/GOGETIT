@@ -30,10 +30,10 @@ class getAllProducts_ViewModel: ViewModel() {
         getLatest(Lang)
         return listProductsMutableLiveData as MutableLiveData<AllProducts_Response>
     }
-    public fun getProductsId(ProductId:String,Lang:String, context: Context): LiveData<AllProducts_Response> {
+    public fun getProductsId(category_id:String,Lang:String, context: Context): LiveData<AllProducts_Response> {
         listProductsMutableLiveData = MutableLiveData<AllProducts_Response>()
         this.context = context
-        getLatest(Lang)
+        getProductsId(category_id,Lang)
         return listProductsMutableLiveData as MutableLiveData<AllProducts_Response>
     }
 
@@ -86,10 +86,10 @@ class getAllProducts_ViewModel: ViewModel() {
         })
     }
 
-    private fun getProductsId(ProductId:String,Lang: String) {
+    private fun getProductsId(category_id:String,Lang: String) {
         var map= HashMap<String,String>()
         map.put("lang",Lang)
-
+        map.put("category_id",category_id)
 
         var service = ApiClient.getClient()?.create(Service::class.java)
         val call = service?.LatestProducts(map)

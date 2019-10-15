@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -17,6 +16,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import com.gogit.Model.Register_Model
 import com.gogit.R
 import com.gogit.ViewModel.Register_ViewModel
@@ -193,6 +193,8 @@ class Login : AppCompatActivity() {
             return (getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)
                 .activeNetworkInfo?.isConnected == true
         }
+
+    fun Btn_ConfirmEmail(view: View) {}
 
 
 }

@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_all_products_.view.*
 /**
  * A simple [Fragment] subclass.
  */
-class Details_Product : Fragment() {
+class ProductsById : Fragment() {
     lateinit var root:View
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

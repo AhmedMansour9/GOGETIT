@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".Fragments.OrderLocation_Fragmet">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_30sdp">
+
+            <EditText
+                android:id="@+id/E_Country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="26dp"
+                android:backgroundTint="#f2f2f2"
+                android:ems="10"
+                android:hint="@string/country"
+                android:inputType="textPersonName"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_City" />
+
+            <EditText
+                android:id="@+id/E_Apartment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="26dp"
+                android:backgroundTint="#f2f2f2"
+                android:ems="10"
+                android:hint="@string/apartment_num"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_BuildingNumber" />
+
+            <EditText
+                android:id="@+id/E_floornumber"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#f2f2f2"
+                android:ems="10"
+                android:hint="@string/f_number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.657"
+                app:layout_constraintStart_toEndOf="@+id/E_BuildingNumber"
+                app:layout_constraintTop_toBottomOf="@+id/E_StrretName" />
+
+            <EditText
+                android:id="@+id/E_BuildingNumber"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#f2f2f2"
+                android:ems="10"
+                android:hint="@string/b_number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_StrretName" />
+
+            <EditText
+                android:id="@+id/E_StrretName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="26dp"
+                android:backgroundTint="#f2f2f2"
+                android:ems="10"
+                android:hint="@string/streetname"
+                android:inputType="textPersonName"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_Region" />
+
+            <EditText
+                android:id="@+id/E_Region"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="26dp"
+                android:backgroundTint="#f2f2f2"
+                android:ems="10"
+                android:hint="@string/region"
+                android:inputType="textPersonName"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_Country" />
+
+            <EditText
+                android:id="@+id/E_City"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="26dp"
+                android:backgroundTint="#f2f2f2"
+                android:ems="10"
+                android:hint="@string/city"
+                android:inputType="textPersonName"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_phone" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarProducts"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/white"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/img_filter"
+                android:layout_width="41dp"
+                android:layout_height="48dp"
+                app:layout_constraintEnd_toEndOf="@+id/toolbarProducts"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="@+id/toolbarProducts"
+                app:layout_constraintTop_toTopOf="@+id/toolbarProducts"
+                app:srcCompat="@drawable/logo_toolbar" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarProducts"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <EditText
+                android:id="@+id/E_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="26dp"
+                android:backgroundTint="#f2f2f2"
+                android:digits="abcdefghijklmnopqrs tuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_filter" />
+
+            <EditText
+                android:id="@+id/E_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="26dp"
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:textColor="#a9a9a9"
+                android:textColorHint="#a9a9a9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_Name" />
+
+            <Button
+                android:id="@+id/Btn_order"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/ordernow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_Apartment" />
+
+            <ProgressBar
+                android:id="@+id/progressBarOrder"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/Btn_order"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/img_filter" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

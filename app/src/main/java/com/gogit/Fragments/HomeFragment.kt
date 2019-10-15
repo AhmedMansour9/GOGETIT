@@ -1,5 +1,7 @@
 package com.gogit.Fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -11,28 +13,38 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager.widget.ViewPager
 import com.gogit.Activties.Navigation.Companion.drawerLayout
 import com.gogit.Adapter.AllProducts_Adapter
+import com.gogit.Adapter.Cart_Adapter
 import com.gogit.Adapter.Categories_Adapter
 import com.gogit.Adapter.Slider_Adapter
 import com.gogit.Model.AllProducts_Response
+import com.gogit.Model.Cart_Response
 import com.gogit.Model.Categories_Response
 import com.gogit.Model.SliderHome_Model
 import com.gogit.R
 import com.gogit.View.ProductBytUd_View
+import com.gogit.View.ProductDetails_View
+import com.gogit.ViewModel.Cart_ViewModel
 import com.gogit.ViewModel.Categories_ViewModel
 import com.gogit.ViewModel.SliderHome_ViewModel
 import com.gogit.ViewModel.getAllProducts_ViewModel
+import kotlinx.android.synthetic.main.fragment_cart_.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HomeFragment : Fragment() ,ProductBytUd_View{
+class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeRefreshLayout.OnRefreshListener{
 
+
+    private lateinit var DataSaver: SharedPreferences
+    lateinit var allproducts: Cart_ViewModel
 
     var toolbarHo: Toolbar?=null
     var swipeTimer:Timer?=null
@@ -43,12 +55,10 @@ class HomeFragment : Fragment() ,ProductBytUd_View{
         }
         viewPager!!.setCurrentItem(currentPage++, true)
     }
+    var UserToken: String?=null
     lateinit var root:View
-    companion object {
-        private var mPager: ViewPager? = null
         private var currentPage = 0
         private var NUM_PAGES = 0
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,29 +67,86 @@ class HomeFragment : Fragment() ,ProductBytUd_View{
          root = inflater.inflate(R.layout.fragment_home, container, false)
         toolbarHo=root.findViewById(R.id.toolbarHome)
         init()
-        getSlider()
-        getLatestProducts()
-        getAllCategories()
+       SwipRefresh()
         Open_AllProducts()
+        openCart()
+        openFiltertion()
+        getNumberOfCart()
         return root
+    }
+    fun getNumberOfCart(){
+        DataSaver = PreferenceManager.getDefaultSharedPreferences(context!!.applicationContext)
+        UserToken = DataSaver.getString("token", null)!!
+        allproducts = ViewModelProviders.of(this)[Cart_ViewModel::class.java]
+        this.context!!.applicationContext?.let {
+            allproducts.getData(UserToken!!,"en", it).observe(this, Observer<Cart_Response> { loginmodel ->
+
+                if(loginmodel!=null) {
+                    root.T_notification_num.visibility=View.VISIBLE
+                root.T_notification_num.text=loginmodel.data.list.size.toString()
+
+                }
+
+            })
+        }
+
+    }
+    fun openCart(){
+        root.icon_cart.setOnClickListener(){
+            var cart=Cart_Fragment()
+            val bundle = Bundle()
+            cart.arguments=bundle
+            fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, cart)
+                ?.addToBackStack(null)?.commit()
+        }
+
+
+    }
+    fun openFiltertion(){
+        root.img_Filter.setOnClickListener(){
+            var cart=Filtertion_Fragment()
+            val bundle = Bundle()
+            cart.arguments=bundle
+            fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, cart)
+                ?.addToBackStack(null)?.commit()
+        }
+
+
     }
 
     private fun Open_AllProducts() {
 
-        root.constraintLayout.setOnClickListener(){
+        root.T_AllProduct.setOnClickListener(){
             fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home,
                 AllProducts_Fragment()
             )?.addToBackStack(null)?.commit()
 
         }
     }
+     fun SwipRefresh(){
+         root.SwipHome.setOnRefreshListener(this)
+         root.SwipHome.isRefreshing=true
+         root.SwipHome.isEnabled = true
+         root.SwipHome.setColorSchemeResources(
+             R.color.colorPrimary,
+             android.R.color.holo_green_dark,
+             android.R.color.holo_orange_dark,
+             android.R.color.holo_blue_dark
+         )
+         root.SwipHome.post(Runnable {
+             getSlider()
+             getLatestProducts()
+             getAllCategories()
 
-  
+         })
+     }
+
 
     fun getSlider(){
         var SliderHome:SliderHome_ViewModel= ViewModelProviders.of(this)[SliderHome_ViewModel::class.java]
         this.context!!.applicationContext?.let {
             SliderHome.getData("en", it)?.observe(this, Observer<SliderHome_Model> { loginmodel ->
+                root.SwipHome.setRefreshing(false)
                 if(loginmodel!=null) {
                     viewPager!!.adapter = this.context?.let { it1 ->
                         Slider_Adapter(
@@ -104,15 +171,18 @@ class HomeFragment : Fragment() ,ProductBytUd_View{
        var allproducts:getAllProducts_ViewModel= ViewModelProviders.of(this)[getAllProducts_ViewModel::class.java]
        this.context!!.applicationContext?.let {
            allproducts.getLatest("en", it)?.observe(this, Observer<AllProducts_Response> { loginmodel ->
-
-               val listAdapter  = AllProducts_Adapter(context!!.applicationContext,loginmodel.data)
-               Recycle_NewShoes.setLayoutManager(
-                   GridLayoutManager(
-                       context!!.applicationContext
-                   ,2)
-               )
-               Recycle_NewShoes.setAdapter(listAdapter)
-
+             if(loginmodel!=null) {
+                 var listAdapter =
+                     AllProducts_Adapter(context!!.applicationContext, loginmodel.data)
+                 listAdapter.onClick(this)
+                 Recycle_NewShoes.setLayoutManager(
+                     GridLayoutManager(
+                         context!!.applicationContext
+                         , 2
+                     )
+                 )
+                 Recycle_NewShoes.setAdapter(listAdapter)
+             }
            })
        }
     }
@@ -122,12 +192,17 @@ class HomeFragment : Fragment() ,ProductBytUd_View{
         var categories:Categories_ViewModel= ViewModelProviders.of(this)[Categories_ViewModel::class.java]
         this.context!!.applicationContext?.let {
             categories.getCategories("en", it).observe(this, Observer<Categories_Response> { loginmodel ->
-
-                val listAdapter  = Categories_Adapter(context!!.applicationContext,loginmodel.data)
-                listAdapter.onClick(this)
-                Recycle_Discover.layoutManager = LinearLayoutManager(this.context!!.applicationContext, LinearLayoutManager.HORIZONTAL ,false)
-
-                Recycle_Discover.setAdapter(listAdapter)
+              if(loginmodel!=null) {
+                  val listAdapter =
+                      Categories_Adapter(context!!.applicationContext, loginmodel.data)
+                  listAdapter.onClick(this)
+                  Recycle_Discover.layoutManager = LinearLayoutManager(
+                      this.context!!.applicationContext,
+                      LinearLayoutManager.HORIZONTAL,
+                      false
+                  )
+                  Recycle_Discover.setAdapter(listAdapter)
+              }
 
             })
         }
@@ -136,20 +211,23 @@ class HomeFragment : Fragment() ,ProductBytUd_View{
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(Update)
-        swipeTimer!!.cancel()
-    }
+        if(swipeTimer!=null) {
+            swipeTimer!!.cancel()
+        }    }
 
     override fun onStop() {
         super.onStop()
         handler.removeCallbacks(Update)
-        swipeTimer!!.cancel()
-    }
+        if(swipeTimer!=null) {
+            swipeTimer!!.cancel()
+        }    }
 
     override fun onDetach() {
         super.onDetach()
         handler.removeCallbacks(Update)
-        swipeTimer!!.cancel()
-    }
+        if(swipeTimer!=null) {
+            swipeTimer!!.cancel()
+        }    }
 
     fun init() {
 
@@ -171,9 +249,23 @@ class HomeFragment : Fragment() ,ProductBytUd_View{
     }
 
     override fun Id(categories: Categories_Response.CategoriesDetails) {
+        var productsByid=ProductsById_Fragment()
+        val bundle = Bundle()
+        bundle.putParcelable("ProductItem", categories)
+        productsByid.arguments=bundle
+        fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)
+            ?.addToBackStack(null)?.commit()
 
     }
+    override fun Details(detailsProduct: AllProducts_Response.AllProducts_Model) {
+        var productsByid=Details_ProductsFragment()
+        val bundle = Bundle()
+        bundle.putParcelable("ProductItem", detailsProduct)
+        productsByid.arguments=bundle
+        fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)
+            ?.addToBackStack(null)?.commit()
 
+    }
 
     private fun drawerSetup() {
 //        val toggle = ActionBarDrawerToggle(
@@ -217,4 +309,22 @@ class HomeFragment : Fragment() ,ProductBytUd_View{
 //                }
 //            }
         }
+
+    override fun onRefresh() {
+        root.SwipHome.isRefreshing=true
+        getSlider()
+        getLatestProducts()
+        getAllCategories()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        getNumberOfCart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getNumberOfCart()
+
+    }
 }

@@ -31,8 +31,42 @@
     <string name="allproduct">ALL SHOES</string>
     <string name="newshoes">NEW SHOES</string>
     <string name="discovershoes">DISCOVER SHOES</string>
+    <string name="btn_Addcart">ADD TO CART</string>
+    <string name="profile">PROFILE</string>
+    <string name="myorders">My Orders</string>
+    <string name="editprofile">EDIT PEOFILE</string>
+    <string name="language">LANGYAGE</string>
+    <string name="logout"> LOGOUT</string>
+    <string name="changedata">Change Data</string>
+    <string name="changepass">Change Password</string>
+    <string name="change">Change </string>
+    <string name="confirmpass">ConFirm Password</string>
+    <string name="updated">Information has been updated Successfully</string>
+    <string name="updatedpassword">Password has been updated Successfully</string>
+    <string name="failedmsg">Failed, There is something wrong</string>
+    <string name="size">Size</string>
+    <string name="checkout"> CHECK OUT</string>
+    <string name="tax">Tax: </string>
+    <string name="delivery">Delivery: </string>
+    <string name="total">Total: </string>
+    <string name="men">MEN</string>
+    <string name="woman">WOMAN</string>
+    <string name="girls">GIRLS</string>
+    <string name="boys">BOYS</string>
+    <string name="city">City</string>
+    <string name="region">Region</string>
+    <string name="streetname">Street Name</string>
+    <string name="b_number">Building Number</string>
+    <string name="f_number">Floor Number</string>
+    <string name="apartment_num">Apartment Number</string>
+    <string name="ordernow">Order Now</string>
+    <string name="country">Country</string>
+    <string name="ordersuccess">Congratualtion Your Order added successfully</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="category">CATEGORY</string>
+    <string name="brand">BRAND</string>
+    <string name="price">PRICE</string>
+    <string name="min">MIN</string>
+    <string name="max">MAX</string>
+    <string name="kids">KIDS</string>
 </resources>
