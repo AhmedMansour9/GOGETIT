@@ -19,15 +19,20 @@
 
     <fragment
         android:id="@+id/nav_myorders"
-        android:name="com.gogit.Activties.ui.slideshow.SlideshowFragment"
+        android:name="com.gogit.Fragments.MyOrders_Fragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_my_orders" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/nav_tools"-->
-<!--        android:name="com.gogit.Activties.ui.tools.ToolsFragment"-->
-<!--        android:label="@string/menu_tools"-->
-<!--        tools:layout="@layout/fragment_tools" />-->
+    <activity
+        android:id="@+id/nav_logout"
+        android:name="com.gogit.Activties.LogOut"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/activity_log_out" />
 
+    <activity
+        android:id="@+id/nav_language"
+        android:name="com.gogit.Activties.Language"
+        android:label="@string/language"
+        tools:layout="@layout/fragment_my_orders" />
 
 </navigation>

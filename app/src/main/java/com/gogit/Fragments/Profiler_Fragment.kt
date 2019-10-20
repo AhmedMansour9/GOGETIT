@@ -239,14 +239,7 @@ class Profiler_Fragment : Fragment() {
                     "Min password must be at least 6 Chrachter and  max 16 Chrachter "
                 root.e_PasswordConFirm.requestFocus()
             }
-            if (!ConfirmPassword.equals(Password)) {
-                root.e_PasswordConFirm.error =
-                    "Password Not Match ConFirm Password "
-                root.e_PasswordConFirm.requestFocus()
-                root.e_Password.error =
-                    "Password Not Match ConFirm Password "
-                    root.e_Password.requestFocus()
-            }
+
 
             else if (!Password.isEmpty() && Password.length >= 6 || Password.length <= 16
                 && ConfirmPassword.length >= 6 || ConfirmPassword.length <= 16
@@ -260,22 +253,29 @@ class Profiler_Fragment : Fragment() {
                         UserToken,
                         Password,
                         ConfirmPassword,
-
                         context!!.applicationContext
                     ).observe(this,
                         Observer<Edit_ProfileResponse> { loginmodel ->
 
                             progressBarLogin.visibility = View.GONE
                             if (loginmodel != null) {
-                                Toast.makeText(
-                                    context!!.applicationContext,
-                                    context!!.applicationContext.getString(R.string.updatedpassword),
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                if(loginmodel.data.equals("Password does not match ")){
+                                    Toast.makeText(
+                                        context!!.applicationContext,
+                                        getString(R.string.oldpasswrong),
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }else if (loginmodel.data.equals("Password changed successfully")) {
+                                    Toast.makeText(
+                                        context!!.applicationContext,
+                                        getString(R.string.updatedpassword),
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
                             } else {
                                 Toast.makeText(
                                     context!!.applicationContext,
-                                    context!!.applicationContext.getString(R.string.failedmsg),
+                                    getString(R.string.failedmsg),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -291,8 +291,6 @@ class Profiler_Fragment : Fragment() {
             }
 
         }
-
-
 
     }
 

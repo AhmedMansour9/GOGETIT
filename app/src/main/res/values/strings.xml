@@ -69,4 +69,35 @@
     <string name="min">MIN</string>
     <string name="max">MAX</string>
     <string name="kids">KIDS</string>
+    <string name="filter">FILTER</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selectbrand">Please Select brand</string>
+    <string name="selectcategory">Please Select zcategory</string>
+    <string name="selecttruemaxprice">Please Make sure that min price lower than max price</string>
+    <string name="notfoundresult">No Result Found</string>
+    <string name="oldpasswrong">Please Make Sure from your old password</string>
+    <string name="newpassword">New Password</string>
+    <string name="perviousorder">PREVIOUS ORDERS</string>
+    <string name="orderid">Orderid</string>
+    <string name="InProgress">In Progress</string>
+    <string name="Delivered">Delivered</string>
+    <string name="Canceled">Canceled</string>
+    <string name="noorders">Not Found Any order</string>
+    <string name="english">English</string>
+    <string name="herbian">Hebrew</string>
+    <string name="arabic">Arabic</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="wantlogout">Do you want to logout?</string>
+    <string name="Items">Items</string>
+    <string name="Deliver">Deliver</string>
+    <string name="payment_method">Payment method</string>
+    <string name="Deliveryaddress">Delivery address</string>
+    <string name="cash">Cash</string>
+    <string name="sub_total">sub total </string>
+    <string name="Tax">Tax </string>
+    <string name="Delivery_fees">Delivery fees </string>
+
 </resources>

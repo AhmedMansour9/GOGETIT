@@ -26,9 +26,29 @@ interface Service {
     fun LatestProducts(
         @QueryMap map:Map<String,String>): Call<AllProducts_Response>
 
-    @POST("latest_products")
+    @POST("fillter_search_all_products")
+    fun FilterProducts(
+        @QueryMap map:Map<String,String>): Call<AllProducts_Response>
+
+
+    @POST("similar_products")
+    fun SimiliarProducts(
+        @QueryMap map:Map<String,String>): Call<AllProducts_Response>
+
+
+    @POST("categories")
     fun Categories(
         @QueryMap map:Map<String,String>): Call<Categories_Response>
+
+    @POST("products_category")
+    fun ProductsByCatId(
+        @QueryMap map:Map<String,String>): Call<AllProducts_Response>
+
+
+    @POST("brands")
+    fun Brands(
+        @QueryMap map:Map<String,String>): Call<Brand_Response>
+
 
     @POST("products_images")
     fun SliderProducts(
@@ -38,10 +58,21 @@ interface Service {
     fun SizesProducts(
         @QueryMap map:Map<String,String>): Call<Sizes_Response>
 
+    @POST("filters_all_sizes")
+    fun AllSizes(
+        @QueryMap map:Map<String,String>): Call<AllSizes_Response>
+
+
     @Headers("Content-Type: application/json;charset=UTF-8")
     @POST("update_profile")
     fun EditProf(
         @QueryMap map:Map<String,String>,@Header("Authorization")auth:String): Call<Edit_ProfileResponse>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("change_password")
+    fun ChangePassword(
+        @QueryMap map:Map<String,String>,@Header("Authorization")auth:String): Call<Edit_ProfileResponse>
+
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     @POST("create_order")
@@ -81,6 +112,15 @@ interface Service {
     fun Profile(
         @QueryMap map:Map<String,String>,@Header("Authorization")auth:String): Call<Profile_Response>
 
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("order_list")
+    fun Myorders(
+        @QueryMap map:Map<String,String>,@Header("Authorization")auth:String): Call<MyOrders_Response>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("order_list_details")
+    fun MyordersDetails(
+        @QueryMap map:Map<String,String>,@Header("Authorization")auth:String): Call<OrderDetails_Response>
 
 //    @Field("Email") email: String,
 //    @Field("Password") password: String

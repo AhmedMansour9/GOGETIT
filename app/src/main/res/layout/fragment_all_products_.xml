@@ -18,7 +18,7 @@
 
 
     <ImageView
-        android:id="@+id/img_filter"
+        android:id="@+id/toolbar"
         android:layout_width="41dp"
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="@+id/toolbarProducts"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbarProducts">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/img_filter"
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_15sdp"
             android:layout_marginEnd="20dp"

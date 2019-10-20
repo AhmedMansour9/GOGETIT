@@ -46,7 +46,7 @@ class Categories_Adapter (context: Context, val userList: List<Categories_Respon
             val img = itemView.findViewById(R.id.imag_product) as ImageView
 
             Glide.with(context)
-                .load("http://bls-logestics.com" + dataModel.image).centerCrop()
+                .load("http://creativityvein.com" + dataModel.image).centerCrop()
                 .into(img)
 
         }

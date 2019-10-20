@@ -68,7 +68,7 @@
                     android:drawableStart="@drawable/icon_password"
                     android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="@string/confirmpass"
+                    android:hint="@string/newpassword"
                     android:inputType="textPassword"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
@@ -114,6 +114,7 @@
                     app:layout_constraintHorizontal_bias="0.533"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

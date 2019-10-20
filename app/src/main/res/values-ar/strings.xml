@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GOGIT</string>
+    <string name="gogetit">اذهب واحصل عليها \ n أفضل متجر للأحذية</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمه السر</string>
+    <string name="login">تسجيل الدخول  </string>
+    <string name="forgetpassword">هل نسيت كلمة المرور ؟</string>
+    <string name="face">تسجيل الدخول باستخدام الفيسبوك</string>
+    <string name="google">تسجيل الدخول عبر جوجل</string>
+    <string name="name">الاسم</string>
+    <string name="phone">رقم التليفون</string>
+    <string name="signup">انشاء حساب</string>
+    <string name="signin">تسجيل دخول</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">الصفحة الرئيسية</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="emailisused">البريد الإلكتروني مستخدم</string>
+    <string name="wrongemailorpass">البريد الإلكتروني أو كلمة المرور خاطئة</string>
+    <string name="nointernet">لا يوجد اتصال إنترنت</string>
+    <string name="allproduct">كل الاحذيه</string>
+    <string name="newshoes">الاحذية الجديدة</string>
+    <string name="discovershoes">اكتشف المزيد</string>
+    <string name="btn_Addcart">اضف الي السلة</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="myorders">طلباتي</string>
+    <string name="editprofile">تعديل الصفحة الشخصية</string>
+    <string name="language">اللغة</string>
+    <string name="logout"> تسجيل خروج</string>
+    <string name="changedata">تعديل البيانات</string>
+    <string name="changepass">تعديل رقم المرور</string>
+    <string name="change">تعديل </string>
+    <string name="confirmpass">ConFirm Password</string>
+    <string name="updated">تم تحديث المعلومات بنجاح</string>
+    <string name="updatedpassword">تم تحديث كلمة المرور بنجاح</string>
+    <string name="failedmsg">فشل ، هناك شيء خاطئ</string>
+    <string name="size">بحجم</string>
+    <string name="checkout"> الدفع</string>
+    <string name="tax">ضريبة: </string>
+    <string name="delivery">توصيل: </string>
+    <string name="total">المجموع الكلي : </string>
+    <string name="men">الرجال</string>
+    <string name="woman">السيدات</string>
+    <string name="girls">GIRLS</string>
+    <string name="boys">BOYS</string>
+    <string name="city">المدينة</string>
+    <string name="region">منطقة</string>
+    <string name="streetname">اسم الشارع</string>
+    <string name="b_number">رقم المبني</string>
+    <string name="f_number">رقم الدور</string>
+    <string name="apartment_num">رقم الشقة</string>
+    <string name="ordernow">اطلب الان</string>
+    <string name="country">البلد</string>
+    <string name="ordersuccess">تهنئة تمت إضافة طلبك بنجاح</string>
+
+    <string name="category">الفئة</string>
+    <string name="brand">الماركة</string>
+    <string name="price">السعر</string>
+    <string name="min">اقل</string>
+    <string name="max">اعلي</string>
+    <string name="kids">الاطفال</string>
+    <string name="filter">ترتيب</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selectbrand">من فضلك اختار الماركة</string>
+    <string name="selectcategory">من فضلك اختار الفئة</string>
+    <string name="selecttruemaxprice">يرجى التأكد من أن سعر أقل من الحد الأقصى للسعر</string>
+    <string name="notfoundresult">لم يتم العثور على نتيجة</string>
+    <string name="oldpasswrong">يرجى التأكد من كلمة المرور القديمة</string>
+    <string name="newpassword">كلمة سر جديدة</string>
+    <string name="perviousorder">طلبات سابقة</string>
+    <string name="orderid">رقم الطلب : </string>
+    <string name="InProgress">في التحضير</string>
+    <string name="Delivered">وصل</string>
+    <string name="Canceled">تم الغاءه</string>
+    <string name="noorders">لم يتم العثور على أي طلب</string>
+    <string name="english">English</string>
+    <string name="herbian">עברי</string>
+    <string name="arabic">Arabic</string>
+
+</resources>

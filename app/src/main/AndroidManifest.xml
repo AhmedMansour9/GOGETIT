@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activties.LogOut"
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity
+            android:name=".Activties.Language"
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".Activties.Navigation"
             android:label="@string/title_activity_navigation"

@@ -23,6 +23,9 @@ class Filtertion_Fragment : Fragment() {
         // Inflate the layout for this fragment
         root= inflater.inflate(R.layout.fragment_filtertion, container, false)
         openMens()
+        openWomans()
+        openKids()
+
 
         return root
     }
@@ -33,10 +36,32 @@ class Filtertion_Fragment : Fragment() {
             val bundle = Bundle()
             bundle.putString("type", "men")
             productsByid.arguments=bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)?.commit()
+            fragmentManager?.popBackStack()
+            fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)?.addToBackStack(null)?.commit()
 
         }
     }
+    fun openWomans(){
+        root.constrain_Woman.setOnClickListener(){
+            var productsByid=Another_Filtertion()
+            val bundle = Bundle()
+            bundle.putString("type", "woman")
+            productsByid.arguments=bundle
+            fragmentManager?.popBackStack()
+            fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)?.addToBackStack(null)?.commit()
 
+        }
+    }
+    fun openKids(){
+        root.constrain_kids.setOnClickListener(){
+            var productsByid=Another_Filtertion()
+            val bundle = Bundle()
+            bundle.putString("type", "kid")
+            productsByid.arguments=bundle
+            fragmentManager?.popBackStack()
+            fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)?.addToBackStack(null)?.commit()
+
+        }
+    }
 
 }

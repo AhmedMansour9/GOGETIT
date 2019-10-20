@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 class ApiClient {
     companion object{
-        private val BasuRl: String = "http://bls-logestics.com/api/"
+        private val BasuRl: String = "http://creativityvein.com/api/"
 
         private var retrofit: Retrofit? = null
         public  fun  getClient(): Retrofit? {

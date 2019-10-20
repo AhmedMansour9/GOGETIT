@@ -55,18 +55,18 @@ class AllProducts_Adapter (context: Context,val userList: List<AllProducts_Respo
 //            val Price:Int=pricee.toInt()
             if (dataModel.salePrice!=null) {
                 if (dataModel.salePrice.equals("0")) {
-                        price.text = "$" + dataModel.priceGeneral
+                        price.text = dataModel.priceGeneral
             } else {
-                price.text = "$" + dataModel.salePrice
-                OrignalPrice.text = "$" + dataModel.priceGeneral
+                price.text =  dataModel.salePrice
+                OrignalPrice.text = dataModel.priceGeneral
                 OrignalPrice.setPaintFlags(OrignalPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
             }
         }
             else {
-                price.text = "$" + dataModel.priceGeneral
+                price.text = dataModel.priceGeneral
             }
             Glide.with(context)
-                .load("http://bls-logestics.com" + dataModel.image).centerCrop().into(img)
+                .load("http://creativityvein.com" + dataModel.image).into(img)
 
         }
     }

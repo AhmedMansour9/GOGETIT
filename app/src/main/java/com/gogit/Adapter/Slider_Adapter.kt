@@ -34,9 +34,7 @@ class Slider_Adapter (private val context: Context, private val imageModelArrayL
             .findViewById(R.id.image) as ImageView
 
         Glide.with(context)
-            .load("http://bls-logestics.com" + imageModelArrayList.get(position).image)
-
-            .centerCrop()
+            .load("http://creativityvein.com" + imageModelArrayList.get(position).image)
             .into(imageView)
 
 

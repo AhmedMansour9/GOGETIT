@@ -49,12 +49,12 @@ class Cart_Adapter(context: Context, val userList: List<Cart_Response.Data.X>)
         fun bindItems(dataModel: Cart_Response.Data.X) {
 
             itemView.T_Title.text = dataModel.productName
-            itemView.T_Price.text="$"+dataModel.unitPrice
+            itemView.T_Price.text=dataModel.unitPrice
             itemView.T_Count.text=dataModel.quantity
             itemView.T_Size.text=context.resources.getString(R.string.size)+": "+dataModel.size
-            itemView.TotalPrice.text="$"+dataModel.totalUnitPrice.toString()
+            itemView.TotalPrice.text=dataModel.totalUnitPrice.toString()
             Glide.with(context)
-                .load("http://bls-logestics.com" + dataModel.image).centerCrop().into(itemView.img_cart)
+                .load("http://creativityvein.com" + dataModel.image).into(itemView.img_cart)
            itemView.img_plus.setOnClickListener(){
                var count :Int= (itemView.T_Count.text as String).toInt()
                count++

@@ -101,7 +101,7 @@ private lateinit var DataSaver: SharedPreferences
 
                 if (isConnected) {
                     root.progressBarOrder.visibility=View.VISIBLE
-                    root.Btn_order.isEnabled=true
+                    root.Btn_order.isEnabled=false
                     var order:Order_ViewModel=
                         ViewModelProviders.of(this)[Order_ViewModel::class.java]
                     order.getData(
@@ -125,7 +125,7 @@ private lateinit var DataSaver: SharedPreferences
                     ).observe(this,
                         Observer<Order_Response> { loginmodel ->
                             root.progressBarOrder.visibility=View.GONE
-                            root.Btn_order.isEnabled=false
+                            root.Btn_order.isEnabled=true
                             if (loginmodel != null) {
                                 Toast.makeText(
                                     context!!.applicationContext,

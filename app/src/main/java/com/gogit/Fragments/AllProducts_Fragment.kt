@@ -19,6 +19,7 @@ import com.gogit.View.ProductDetails_View
 import com.gogit.ViewModel.getAllProducts_ViewModel
 import kotlinx.android.synthetic.main.fragment_all_products_.*
 import kotlinx.android.synthetic.main.fragment_all_products_.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -34,10 +35,21 @@ class AllProducts_Fragment : Fragment() , ProductDetails_View {
          root= inflater.inflate(R.layout.fragment_all_products_, container, false)
         getAllProducts()
         init()
+        openFiltertion()
 
         return root;
     }
+    fun openFiltertion(){
+        root.img_filter.setOnClickListener(){
+            var cart=Filtertion_Fragment()
+            val bundle = Bundle()
+            cart.arguments=bundle
+            fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, cart)
+                ?.addToBackStack(null)?.commit()
+        }
 
+
+    }
     fun getAllProducts(){
         var allproducts: getAllProducts_ViewModel = ViewModelProviders.of(this)[getAllProducts_ViewModel::class.java]
         this.context!!.applicationContext?.let {

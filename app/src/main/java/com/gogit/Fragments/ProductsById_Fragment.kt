@@ -21,12 +21,15 @@ import com.gogit.View.ProductDetails_View
 import com.gogit.ViewModel.getAllProducts_ViewModel
 import kotlinx.android.synthetic.main.fragment_all_products_.*
 import kotlinx.android.synthetic.main.fragment_all_products_.view.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class ProductsById_Fragment : Fragment() , ProductDetails_View {
      lateinit var root:View
+    lateinit var DeviceLang:String
+
     var bundle=Bundle()
     lateinit var categories: Categories_Response.CategoriesDetails
     override fun onCreateView(
@@ -36,8 +39,8 @@ class ProductsById_Fragment : Fragment() , ProductDetails_View {
         // Inflate the layout for this fragment
         root= inflater.inflate(R.layout.fragment_products_by_id_, container, false)
          init()
+        Language()
         getFilterProducts()
-
 
         return root
     }
@@ -45,17 +48,22 @@ class ProductsById_Fragment : Fragment() , ProductDetails_View {
 
         bundle = this!!.arguments!!
         categories = bundle.getParcelable("ProductItem")!!
+        root.T_AllProduct.text=categories.title
         var allproducts: getAllProducts_ViewModel = ViewModelProviders.of(this)[getAllProducts_ViewModel::class.java]
         this.context!!.applicationContext?.let {
-            allproducts.getProductsId(categories.id.toString(),"en", it)?.observe(this, Observer<AllProducts_Response> { loginmodel ->
-                val listAdapter  = AllProducts_Adapter(context!!.applicationContext,loginmodel.data)
-                listAdapter.onClick(this)
-                Recycle_AllShoes.setLayoutManager(
-                    GridLayoutManager(
-                        context!!.applicationContext
-                        ,2)
-                )
-                Recycle_AllShoes.setAdapter(listAdapter)
+            allproducts.getProductsId(categories.id.toString(),DeviceLang, it)?.observe(this, Observer<AllProducts_Response> { loginmodel ->
+               if(loginmodel.data!=null) {
+                   val listAdapter =
+                       AllProducts_Adapter(context!!.applicationContext, loginmodel.data)
+                   listAdapter.onClick(this)
+                   Recycle_AllShoes.setLayoutManager(
+                       GridLayoutManager(
+                           context!!.applicationContext
+                           , 2
+                       )
+                   )
+                   Recycle_AllShoes.setAdapter(listAdapter)
+               }
 
             })
         }
@@ -87,5 +95,9 @@ class ProductsById_Fragment : Fragment() , ProductDetails_View {
         fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)
             ?.addToBackStack(null)?.commit()
 
+    }
+
+    fun Language() {
+        DeviceLang = Locale.getDefault().language
     }
 }

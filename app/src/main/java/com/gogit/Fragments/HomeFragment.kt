@@ -40,12 +40,14 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeRefreshLayout.OnRefreshListener{
 
+
+class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeRefreshLayout.OnRefreshListener{
+    var isVisited:Boolean = false
 
     private lateinit var DataSaver: SharedPreferences
     lateinit var allproducts: Cart_ViewModel
-
+    lateinit var DeviceLang:String
     var toolbarHo: Toolbar?=null
     var swipeTimer:Timer?=null
     val handler = Handler()
@@ -67,11 +69,11 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
          root = inflater.inflate(R.layout.fragment_home, container, false)
         toolbarHo=root.findViewById(R.id.toolbarHome)
         init()
-       SwipRefresh()
+        Language()
+        SwipRefresh()
         Open_AllProducts()
         openCart()
         openFiltertion()
-        getNumberOfCart()
         return root
     }
     fun getNumberOfCart(){
@@ -82,7 +84,7 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
             allproducts.getData(UserToken!!,"en", it).observe(this, Observer<Cart_Response> { loginmodel ->
 
                 if(loginmodel!=null) {
-                    root.T_notification_num.visibility=View.VISIBLE
+                root.T_notification_num.visibility=View.VISIBLE
                 root.T_notification_num.text=loginmodel.data.list.size.toString()
 
                 }
@@ -137,6 +139,7 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
              getSlider()
              getLatestProducts()
              getAllCategories()
+             getNumberOfCart()
 
          })
      }
@@ -145,8 +148,8 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
     fun getSlider(){
         var SliderHome:SliderHome_ViewModel= ViewModelProviders.of(this)[SliderHome_ViewModel::class.java]
         this.context!!.applicationContext?.let {
-            SliderHome.getData("en", it)?.observe(this, Observer<SliderHome_Model> { loginmodel ->
-                root.SwipHome.setRefreshing(false)
+            SliderHome.getData(DeviceLang, it)?.observe(this, Observer<SliderHome_Model> { loginmodel ->
+                root.SwipHome.isRefreshing=false
                 if(loginmodel!=null) {
                     viewPager!!.adapter = this.context?.let { it1 ->
                         Slider_Adapter(
@@ -154,6 +157,7 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
                             loginmodel.data as ArrayList<SliderHome_Model.Slider_Home>
                         )
                     }
+                    root.view_pager_circle_indicator.setViewPager(viewPager)
 
                     NUM_PAGES = loginmodel.data!!.size
                     swipeTimer = Timer()
@@ -170,7 +174,7 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
    fun getLatestProducts(){
        var allproducts:getAllProducts_ViewModel= ViewModelProviders.of(this)[getAllProducts_ViewModel::class.java]
        this.context!!.applicationContext?.let {
-           allproducts.getLatest("en", it)?.observe(this, Observer<AllProducts_Response> { loginmodel ->
+           allproducts.getLatest(DeviceLang, it)?.observe(this, Observer<AllProducts_Response> { loginmodel ->
              if(loginmodel!=null) {
                  var listAdapter =
                      AllProducts_Adapter(context!!.applicationContext, loginmodel.data)
@@ -191,7 +195,7 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
     fun getAllCategories(){
         var categories:Categories_ViewModel= ViewModelProviders.of(this)[Categories_ViewModel::class.java]
         this.context!!.applicationContext?.let {
-            categories.getCategories("en", it).observe(this, Observer<Categories_Response> { loginmodel ->
+            categories.getCategories(DeviceLang, it).observe(this, Observer<Categories_Response> { loginmodel ->
               if(loginmodel!=null) {
                   val listAdapter =
                       Categories_Adapter(context!!.applicationContext, loginmodel.data)
@@ -253,7 +257,7 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
         val bundle = Bundle()
         bundle.putParcelable("ProductItem", categories)
         productsByid.arguments=bundle
-        fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)
+        fragmentManager?.beginTransaction()?.add(R.id.Constrain_Home, productsByid)
             ?.addToBackStack(null)?.commit()
 
     }
@@ -262,7 +266,7 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
         val bundle = Bundle()
         bundle.putParcelable("ProductItem", detailsProduct)
         productsByid.arguments=bundle
-        fragmentManager?.beginTransaction()?.replace(R.id.Constrain_Home, productsByid)
+        fragmentManager?.beginTransaction()?.add(R.id.Constrain_Home, productsByid)
             ?.addToBackStack(null)?.commit()
 
     }
@@ -322,9 +326,20 @@ class HomeFragment : Fragment() ,ProductBytUd_View, ProductDetails_View , SwipeR
         getNumberOfCart()
     }
 
+
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            getNumberOfCart()
+        }
+    }
     override fun onResume() {
         super.onResume()
-        getNumberOfCart()
 
+    }
+
+    fun Language() {
+         DeviceLang = Locale.getDefault().language
     }
 }

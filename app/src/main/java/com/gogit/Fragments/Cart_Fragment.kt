@@ -23,6 +23,7 @@ import com.gogit.R
 import com.gogit.ViewModel.Cart_ViewModel
 import kotlinx.android.synthetic.main.fragment_cart_.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -33,7 +34,8 @@ class Cart_Fragment : Fragment(), PlusId_View ,SwipeRefreshLayout.OnRefreshListe
     lateinit var root:View
     private lateinit var DataSaver: SharedPreferences
     lateinit var UserToken: String
-     var T_TotalPrice:String?=null
+    lateinit var DeviceLang:String
+    var T_TotalPrice:String?=null
     lateinit var allproducts: Cart_ViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +45,7 @@ class Cart_Fragment : Fragment(), PlusId_View ,SwipeRefreshLayout.OnRefreshListe
         allproducts = ViewModelProviders.of(this)[Cart_ViewModel::class.java]
         DataSaver = PreferenceManager.getDefaultSharedPreferences(context!!.applicationContext)
         UserToken = DataSaver.getString("token", null)!!
+        Language()
         SwipRefresh()
         getAllCart()
         checkOrder()
@@ -66,14 +69,14 @@ class Cart_Fragment : Fragment(), PlusId_View ,SwipeRefreshLayout.OnRefreshListe
     fun getAllCart(){
         root.SwipCart.isRefreshing= true
         this.context!!.applicationContext?.let {
-            allproducts.getData(UserToken,"en", it).observe(this, Observer<Cart_Response> { loginmodel ->
+            allproducts.getData(UserToken,DeviceLang, it).observe(this, Observer<Cart_Response> { loginmodel ->
                 root.SwipCart.isRefreshing=false
                 if(loginmodel!=null) {
                     T_TotalPrice=loginmodel.data.price.toString()
                     root.contrain_checkout.visibility=View.VISIBLE
-                    root.T_Tax.text=resources.getString(R.string.tax)+"$"+loginmodel.data.totalTax.toString()
-                    root.T_Deleivery.text=resources.getString(R.string.delivery)+"$"+loginmodel.data.totalDeleveryFees
-                    root.TotalPrice.text=resources.getString(R.string.total)+"$"+loginmodel.data.price.toString()
+                    root.T_Tax.text=resources.getString(R.string.tax)+loginmodel.data.totalTax.toString()+"$"
+                    root.T_Deleivery.text=resources.getString(R.string.delivery)+loginmodel.data.totalDeleveryFees+"$"
+                    root.TotalPrice.text=resources.getString(R.string.total)+loginmodel.data.price.toString()+"$"
                     val listAdapter =
                         Cart_Adapter(context!!.applicationContext, loginmodel.data.list)
                     listAdapter.OnClickPlus(this)
@@ -136,11 +139,15 @@ class Cart_Fragment : Fragment(), PlusId_View ,SwipeRefreshLayout.OnRefreshListe
     override fun delete(Id: String) {
 
         this.context!!.applicationContext?.let {
-            allproducts.DeleteData(UserToken,"en",Id, it).observe(this, Observer<PlusCart_Response> { loginmodel ->
+            allproducts.DeleteData(UserToken,DeviceLang,Id, it).observe(this, Observer<PlusCart_Response> { loginmodel ->
                 if(loginmodel!=null) {
                     getAllCart()
                 }
 
             })
         }
-    }}
+    }
+    fun Language() {
+        DeviceLang = Locale.getDefault().language
+    }
+}

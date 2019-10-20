@@ -84,11 +84,11 @@ class EditProfile_ViiewModel : ViewModel() {
 
         var map = HashMap<String, String>()
         map.put("password", Password)
-        map.put("ConFirmPass", ConFirmPass)
+        map.put("new_password", ConFirmPass)
 
 
         var service = ApiClient.getClient()?.create(Service::class.java)
-        val call = service?.EditProf(map, "Bearer " + auth)
+        val call = service?.ChangePassword(map, "Bearer " + auth)
         call?.enqueue(object : Callback, retrofit2.Callback<Edit_ProfileResponse> {
             override fun onResponse(
                 call: Call<Edit_ProfileResponse>,

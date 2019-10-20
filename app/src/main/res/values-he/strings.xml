@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GOGIT</string>
+    <string name="gogetit">לכו להשיג את זה \ n חנות הנעליים הטובה ביותר</string>
+    <string name="email">אימייל</string>
+    <string name="password">סיסמה</string>
+    <string name="login">התחברות  </string>
+    <string name="forgetpassword">שכחת את הסיסמא ?</string>
+    <string name="face">התחבר עם פייסבוק</string>
+    <string name="google">התחבר ל- Google</string>
+    <string name="name">שם</string>
+    <string name="phone">מכשיר טלפון</string>
+    <string name="signup">הירשם</string>
+    <string name="signin">היכנס</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">בית</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="emailisused">דוא"ל משמש</string>
+    <string name="wrongemailorpass">אימייל או סיסמא שגויים</string>
+    <string name="nointernet">אין חיבור אינטרנט</string>
+    <string name="allproduct">כל הנעליים</string>
+    <string name="newshoes">נעליים חדשות</string>
+    <string name="discovershoes">גלו נעליים</string>
+    <string name="btn_Addcart">הוסף לעגלה</string>
+    <string name="profile">פרופיל</string>
+    <string name="myorders">ההזמנות שלי</string>
+    <string name="editprofile">ערוך פרופיל</string>
+    <string name="language">שפה</string>
+    <string name="logout"> להתנתק</string>
+    <string name="changedata">שנה נתונים</string>
+    <string name="changepass">שנה סיסמא</string>
+    <string name="change">שינוי </string>
+    <string name="confirmpass">אשר סיסמה</string>
+    <string name="updated">המידע עודכן בהצלחה</string>
+    <string name="updatedpassword">הסיסמה עודכנה בהצלחה</string>
+    <string name="failedmsg">נכשל, יש משהו לא בסדר</string>
+    <string name="size">גודל</string>
+    <string name="checkout"> לבדוק</string>
+    <string name="tax">מס: </string>
+    <string name="delivery">משלוח: </string>
+    <string name="total">סה"כ: </string>
+    <string name="men">גברים</string>
+    <string name="woman">אישה</string>
+    <string name="girls">בנות</string>
+    <string name="boys">נערים</string>
+    <string name="city">עיר</string>
+    <string name="region">אזור</string>
+    <string name="streetname">שם רחוב</string>
+    <string name="b_number">מספר בניין</string>
+    <string name="f_number">מספר קומה</string>
+    <string name="apartment_num">מספר קומה...</string>
+    <string name="ordernow">הזמן עכשיו</string>
+    <string name="country">מדינה</string>
+    <string name="ordersuccess">מזל טוב הזמנתך נוספה בהצלחה</string>
+
+    <string name="category">קטגוריה</string>
+    <string name="brand">מותג</string>
+    <string name="price">מחיר</string>
+    <string name="min">MIN</string>
+    <string name="max">דקות</string>
+    <string name="kids">ילדים</string>
+    <string name="filter">מסנן</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selectbrand">Please בחר מותג</string>
+    <string name="selectcategory">בחר zcategory</string>
+    <string name="selecttruemaxprice">אנא וודא שמחיר מינימלי נמוך ממחיר מקסימאלי</string>
+    <string name="notfoundresult">לא נמצאו תוצאות</string>
+    <string name="oldpasswrong">אנא ודא מהסיסמה הישנה שלך</string>
+    <string name="newpassword">סיסמה חדשה</string>
+    <string name="perviousorder">הזמנות קודמות</string>
+    <string name="orderid">מספר הזמנה</string>
+    <string name="InProgress">בתהליך</string>
+    <string name="Delivered">נמסר</string>
+    <string name="Canceled">מבוטל</string>
+    <string name="noorders">לא נמצא כל הזמנה</string>
+    <string name="english">English</string>
+    <string name="herbian">עברי</string>
+    <string name="arabic">Arabic</string>
+
+
+</resources>
